@@ -1,5 +1,7 @@
 # JavaScript HTTP Snippet Pack for VS Code
 VS Code extension for http requests snippets with Axios, Fetch and Superagent
+
+You can install it [Here](https://marketplace.visualstudio.com/items?itemName=Heigen007.http-requests-snippets-extension)
 ## Usage
 
 -----------------------------------------
