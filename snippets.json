@@ -1,0 +1,398 @@
+{
+	"axiosHead":{
+		"prefix": "axHead",
+		"body": [
+			"axios.head('$1')",
+			".then(() => {",
+			"  console.log('OK')",
+			"})",
+			".catch(err => {",
+			"  console.log(err)",
+			"})"
+		],
+		"description": "axios head method"
+	},
+	"axiosGet":{
+		"prefix": "axGet",
+		"body": [
+			"axios.get('$1')",
+			".then(res => {",
+			"  console.log(res)",
+			"})",
+			".catch(err => {",
+			"  console.log(err)",
+			"})"
+		],
+		"description": "axios get method"
+	},
+	"axiosPost":{
+		"prefix": "axPost",
+		"body": [
+			"axios.post('$1', {$2})",
+			".then(res => {",
+			"  console.log(res)",
+			"})",
+			".catch(err => {",
+			"  console.log(err)",
+			"})"
+		],
+		"description": "axios post method"
+	},
+	"axiosDelete":{
+		"prefix": "axDel",
+		"body": [
+			"axios.delete('$1', { data: {$2} })",
+			".then(res => {",
+			"  console.log(res)",
+			"})",
+			".catch(err => {",
+			"  console.log(err)",
+			"})"
+		],
+		"description": "axios delete method"
+	},
+	"axiosPut":{
+		"prefix": "axPut",
+		"body": [
+			"axios.put('$1', {$2})",
+			".then(res => {",
+			"  console.log(res)",
+			"})",
+			".catch(err => {",
+			"  console.log(err)",
+			"})"
+		],
+		"description": "axios put method"
+	},
+	"axiosPatch":{
+		"prefix": "axPatch",
+		"body": [
+			"axios.patch('$1', {$2})",
+			".then(res => {",
+			"  console.log(res)",
+			"})",
+			".catch(err => {",
+			"  console.log(err)",
+			"})"
+		],
+		"description": "axios patch method"
+	},
+	"axiosOptions":{
+		"prefix": "axOpt",
+		"body": [
+			"axios.options('$1')",
+			".then(res => {",
+			"  console.log(res)",
+			"})",
+			".catch(err => {",
+			"  console.log(err)",
+			"})"
+		],
+		"description": "axios options method"
+	},
+	"axiosFullOptions": {
+		"prefix": "axFullOpt",
+		"body": [
+			"axios({",
+				"  url: '/user',",
+				"  method: 'get',",
+				"  baseURL: 'https://some-domain.com/api/',",
+				"  transformRequest: [function (data, headers) {",
+				"    return data;",
+				"  }],",
+				"  transformResponse: [function (data) {",
+				"    return data;",
+				"  }],",
+				"  headers: {'X-Requested-With': 'XMLHttpRequest'},",
+				"  params: {",
+				"    ID: 12345",
+				"  },",
+				"  paramsSerializer: function(params) {",
+				"    return Qs.stringify(params, {arrayFormat: 'brackets'})",
+				"  },",
+				"  data: {",
+				"    firstName: 'Fred'",
+				"  },",
+				"  timeout: 1000,",
+				"  withCredentials: false, // default",
+				"  adapter: function (config) {",
+				"    /* ... */",
+				"  },",
+				"  auth: {",
+				"    username: 'janedoe',",
+				"    password: 's00pers3cret'",
+				"  },",
+				"  responseType: 'json', // default",
+				"  xsrfCookieName: 'XSRF-TOKEN', // default",
+				"  xsrfHeaderName: 'X-XSRF-TOKEN', // default",
+				"  onUploadProgress: function (progressEvent) {},",
+				"  onDownloadProgress: function (progressEvent) {},",
+				"  maxContentLength: 2000,",
+				"  validateStatus: function (status) {",
+				"    return status >= 200 && status < 300; // default",
+				"  },",
+				"  maxRedirects: 5, // default",
+				"  httpAgent: new http.Agent({ keepAlive: true }),",
+				"  httpsAgent: new https.Agent({ keepAlive: true }),",
+				"  proxy: {",
+				"    host: '127.0.0.1',",
+				"    port: 9000,",
+				"    auth: {",
+				"    username: 'mikeymike',",
+				"    password: 'rapunz3l'",
+				"    }",
+				"  },",
+				"  cancelToken: new CancelToken(function (cancel) {})",
+			"})",
+			".then(res => {",
+			"  console.log(res)",
+			"})",
+			".catch(err => {",
+			"  console.log(err)",
+			"})"
+		],
+		"description": "axios full options"
+	},
+	"axiosCreate": {
+		"prefix": "axCreate",
+		"body": "const instance = axios.create({ baseURL: '$1', headers: {$2}, timeout: 10000 });",
+		"description": "axios create method"
+	},
+	"axiosInterception": {
+		"prefix": "axIntercept",
+		"body": [
+			"axios.interceptors.request.use(",
+			"  request => {",
+			"    if ($1) {",
+			"      return request;",
+			"    }",
+			"    else {",
+			"      throw { someValue: 'someValue' };",
+			"    }",
+			"  },",
+			"  error => {",
+			"    return Promise.reject(error);",
+			"  }",
+			")"
+		],
+		"description": "Axios interception"
+	},
+
+	"fetchHead":{
+		"prefix": "fchHead",
+		"body": [
+			"fetch('$1', {",
+			"  method: 'HEAD',",
+			"})",
+			".then(res => console.log(res))"
+		],
+		"description": "fetch head method"
+	},
+	"fetchGet":{
+		"prefix": "fchGet",
+		"body": [
+			"fetch('$1')",
+			".then(response => {",
+			"  return response.json()",
+			"})",
+			".then(res => console.log(res))"
+		],
+		"description": "fetch get method"
+	},
+	"fetchPost":{
+		"prefix": "fchPost",
+		"body": [
+			"fetch('$1', {",
+			"  method: 'POST',",
+			"  headers: {",
+			"    'Content-Type': 'application/json;charset=utf-8'",
+			"  },",
+			"  body: JSON.stringify({})",
+			"})",
+			".then(response => {",
+			"  return response.json()",
+			"})",
+			".then(res => console.log(res))"
+		],
+		"description": "fetch post method"
+	},
+	"fetchDelete":{
+		"prefix": "fchDel",
+		"body": [
+			"fetch('$1', {",
+			"  method: 'DELETE',",
+			"  headers: {",
+			"    'Content-Type': 'application/json;charset=utf-8'",
+			"  },",
+			"  body: JSON.stringify({})",
+			"})",
+			".then(response => {",
+			"  return response.json()",
+			"})",
+			".then(res => console.log(res))"
+		],
+		"description": "fetch delete method"
+	},
+	"fetchPut":{
+		"prefix": "fchPut",
+		"body": [
+			"fetch('$1', {",
+			"  method: 'PUT',",
+			"  headers: {",
+			"    'Content-Type': 'application/json;charset=utf-8'",
+			"  },",
+			"  body: JSON.stringify({})",
+			"})",
+			".then(response => {",
+			"  return response.json()",
+			"})",
+			".then(res => console.log(res))"
+		],
+		"description": "fetch put method"
+	},
+	"fetchPatch":{
+		"prefix": "fchPatch",
+		"body": [
+			"fetch('$1', {",
+			"  method: 'PATCH',",
+			"  headers: {",
+			"    'Content-Type': 'application/json;charset=utf-8'",
+			"  },",
+			"  body: JSON.stringify({})",
+			"})",
+			".then(response => {",
+			"  return response.json()",
+			"})",
+			".then(res => console.log(res))"
+		],
+		"description": "fetch patch method"
+	},
+	"fetchOptions":{
+		"prefix": "fchOpt",
+		"body": [
+			"fetch('$1', {",
+			"  method: 'OPTIONS',",
+			"})",
+			".then(response => {",
+			"  return response.json()",
+			"})",
+			".then(res => console.log(res))"
+		],
+		"description": "fetch options method"
+	},
+	"fetchInterception": {
+		"prefix": "fchIntercept",
+		"body": [
+			"const constantMock = window.fetch;",
+			"window.fetch = function() {",
+			"  if(true) return constantMock.apply(this, arguments)",
+			"}"
+		],
+		"description": "fetch intercertion"
+	},
+
+	"superagentHead":{
+		"prefix": "supHead",
+		"body": [
+			"superagent",
+			"  .head('$1')",
+			"  .query({$2})",
+			"  .then(res => {",
+			"    console.log(res);",
+			"  })",
+			"  .catch(err => {",
+			"    console.log(err);",
+			"  });"
+		],
+		"description": "fetch head method"
+	},
+	"superagentGet":{
+		"prefix": "supGet",
+		"body": [
+			"superagent",
+			"  .get('$1')",
+			"  .query({$2})",
+			"  .then(res => {",
+			"    console.log(res);",
+			"  })",
+			"  .catch(err => {",
+			"    console.log(err);",
+			"  });"
+		],
+		"description": "superagent get method"
+	},
+	"superagentPost":{
+		"prefix": "supPost",
+		"body": [
+			"superagent",
+			"  .post('$1')",
+			"  .send({$2})",
+			"  .then(res => {",
+			"    console.log(res);",
+			"  })",
+			"  .catch(err => {",
+			"    console.log(err);",
+			"  });"
+		],
+		"description": "superagent post method"
+	},
+	"superagentDelete":{
+		"prefix": "supDel",
+		"body": [
+			"superagent",
+			"  .post('$1')",
+			"  .del({$2})",
+			"  .then(res => {",
+			"    console.log(res);",
+			"  })",
+			"  .catch(err => {",
+			"    console.log(err);",
+			"  });"
+		],
+		"description": "superagent delete method"
+	},
+	"superagentPut":{
+		"prefix": "supPut",
+		"body": [
+			"superagent",
+			"  .put('$1')",
+			"  .send({$2})",
+			"  .then(res => {",
+			"    console.log(res);",
+			"  })",
+			"  .catch(err => {",
+			"    console.log(err);",
+			"  });"
+		],
+		"description": "superagent put method"
+	},
+	"superagentPatch":{
+		"prefix": "supPatch",
+		"body": [
+			"superagent",
+			"  .patch('$1')",
+			"  .send({$2})",
+			"  .then(res => {",
+			"    console.log(res);",
+			"  })",
+			"  .catch(err => {",
+			"    console.log(err);",
+			"  });"
+		],
+		"description": "superagent patch method"
+	},
+	"superagentOptions":{
+		"prefix": "supOpt",
+		"body": [
+			"superagent",
+			"  .options('$1')",
+			"  .then(res => {",
+			"    console.log(res);",
+			"  })",
+			"  .catch(err => {",
+			"    console.log(err);",
+			"  });"
+		],
+		"description": "superagent options method"
+	}
+}
